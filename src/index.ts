@@ -23,7 +23,7 @@ async function readBobContext(): Promise<string> {
     "",
     "## memory.md",
     memory.trim(),
-    ""
+    "",
   ].join("\n");
 }
 
@@ -37,11 +37,11 @@ async function init(): Promise<void> {
   const prompt = [
     context,
     "Initialisiere Bob CLI fuer diese Session.",
-    "Antworte danach kurz mit dem aktuellen Stand und warte auf meinen Task."
+    "Antworte danach kurz mit dem aktuellen Stand und warte auf meinen Task.",
   ].join("\n\n");
 
   const child = spawn("codex", [prompt], {
-    stdio: "inherit"
+    stdio: "inherit",
   });
 
   await new Promise<void>((resolvePromise, reject) => {
@@ -80,4 +80,3 @@ main().catch((error: unknown) => {
   console.error(message);
   process.exitCode = 1;
 });
-
