@@ -11,6 +11,10 @@
 - `bob init` wurde lokal erfolgreich getestet und startet Codex CLI interaktiv mit Bob-CLI-Kontext.
 - Der Codex Trust-Dialog beim ersten Start im Bob-CLI-Projekt ist erwartbar.
 - VS Code erkennt TypeScript/Node-Imports, ESLint und Prettier im Bob-CLI-Projekt.
+- V2 implementiert `bob setup`, `bob home` und ein Bob-Home unter `~/.bob`.
+- `bob show` und `bob init` lesen bevorzugt aus `~/.bob`; ohne Bob-Home nutzen sie den lokalen Entwicklungs-Kontext.
+- `bob setup` wurde lokal erfolgreich getestet und hat `/home/dev/.bob` mit `BOB.md`, `memory.md`, `projects.md` und `first-setup.md` angelegt.
+- Ein zweiter `bob setup`-Lauf ueberschreibt nichts und meldet bestehende Dateien mit `exists`.
 
 ## Ziel V1
 
@@ -45,3 +49,4 @@
 - In V3 kann das Bob-Home per Setup konfigurierbar werden.
 - Bob CLI soll langfristig plattformfreundlich unter Linux, macOS und Windows laufen.
 - V2 soll deshalb Pfade ueber Node-APIs und das User-Home aufloesen, nicht ueber Shell-spezifische Annahmen.
+- V2 ist lokal umgesetzt: Templates liegen unter `templates/`, Setup erstellt fehlende Dateien und ueberschreibt bestehende Dateien nicht.

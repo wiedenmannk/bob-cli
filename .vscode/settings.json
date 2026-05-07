@@ -13,8 +13,7 @@
   "search.exclude": {
     "dist/**": true
   },
-  "typescript.autoClosingTags": false,
-  "javascript.autoClosingTags": false,
+  "js/ts.autoClosingTags.enabled": false,
   "auto-close-tag.disableOnLanguage": ["javascript", "typescript"],
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",

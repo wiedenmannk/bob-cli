@@ -1,20 +1,28 @@
 #!/usr/bin/env node
 
 import { spawn } from "node:child_process";
-import { readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { constants } from "node:fs";
+import { access, copyFile, mkdir, readFile } from "node:fs/promises";
+import { homedir } from "node:os";
+import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const bobHome = join(homedir(), ".bob");
+const templateDir = resolve(rootDir, "templates");
+const bobFiles = ["BOB.md", "memory.md", "projects.md", "first-setup.md"];
 const usage = [
   "Bob CLI",
   "",
   "Nutzung:",
+  "  bob setup   Bob-Home unter ~/.bob anlegen",
+  "  bob home    Bob-Home-Pfad anzeigen",
   "  bob show    Bob-CLI-Kontext anzeigen",
   "  bob init    Codex CLI mit Bob-CLI-Kontext starten",
   "  bob help    Hilfe anzeigen",
   "",
   "Lokale Entwicklung:",
+  "  npm run bob:setup",
   "  npm run bob:show",
   "  npm run bob:init",
 ].join("\n");
@@ -23,18 +31,64 @@ async function readTextFile(path: string): Promise<string> {
   return readFile(path, "utf8");
 }
 
+async function fileExists(path: string): Promise<boolean> {
+  try {
+    await access(path, constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function readOptionalTextFile(path: string): Promise<string | null> {
+  if (!(await fileExists(path))) {
+    return null;
+  }
+
+  return readTextFile(path);
+}
+
+async function readContextFiles(baseDir: string): Promise<string> {
+  const sections = await Promise.all(
+    bobFiles.map(async (file) => {
+      const content = await readOptionalTextFile(resolve(baseDir, file));
+
+      if (!content) {
+        return null;
+      }
+
+      return [`## ${file}`, content.trim(), ""].join("\n");
+    }),
+  );
+
+  return sections
+    .filter((section): section is string => Boolean(section))
+    .join("\n");
+}
+
 async function readBobContext(): Promise<string> {
-  const bob = await readTextFile(resolve(rootDir, "BOB.md"));
-  const memory = await readTextFile(resolve(rootDir, "memory.md"));
+  const homeReady =
+    (await fileExists(resolve(bobHome, "BOB.md"))) &&
+    (await fileExists(resolve(bobHome, "memory.md")));
+
+  if (homeReady) {
+    return [
+      "# Bob CLI Startkontext",
+      "",
+      `Quelle: ${bobHome}`,
+      "",
+      await readContextFiles(bobHome),
+    ].join("\n");
+  }
 
   return [
     "# Bob CLI Startkontext",
     "",
-    "## BOB.md",
-    bob.trim(),
+    "Hinweis: Bob-Home wurde nicht gefunden oder ist unvollstaendig.",
+    "Fuehre `bob setup` aus, um ~/.bob anzulegen.",
+    "Nutze lokalen Entwicklungs-Kontext aus dem bob-cli-Projekt.",
     "",
-    "## memory.md",
-    memory.trim(),
+    await readContextFiles(rootDir),
     "",
   ].join("\n");
 }
@@ -46,6 +100,28 @@ async function show(): Promise<void> {
 
 function help(): void {
   console.log(usage);
+}
+
+function home(): void {
+  console.log(bobHome);
+}
+
+async function setup(): Promise<void> {
+  await mkdir(bobHome, { recursive: true });
+
+  console.log(`Bob Home: ${bobHome}`);
+
+  for (const file of bobFiles) {
+    const target = resolve(bobHome, file);
+
+    if (await fileExists(target)) {
+      console.log(`exists  ${basename(target)}`);
+      continue;
+    }
+
+    await copyFile(resolve(templateDir, file), target);
+    console.log(`created ${basename(target)}`);
+  }
 }
 
 async function init(): Promise<void> {
@@ -89,6 +165,16 @@ async function main(): Promise<void> {
 
   if (command === "help" || command === "--help" || command === "-h") {
     help();
+    return;
+  }
+
+  if (command === "home") {
+    home();
+    return;
+  }
+
+  if (command === "setup") {
+    await setup();
     return;
   }
 

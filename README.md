@@ -6,10 +6,9 @@ Bob CLI basiert auf ChatGPT Codex.
 Bob CLI liest Konfigurationsdateien ein, damit er eine Persoenlichkeit hat und
 nach einer bestimmten Arbeitsweise vorgeht.
 
-V1 ist der erste Schritt:
-Projekte muessen aktuell noch manuell ausgewaehlt werden.
-Bob CLI ist noch nicht global verfuegbar und muss im Projektordner gestartet
-werden.
+V2 fuehrt ein zentrales Bob-Home unter `~/.bob` ein.
+Bob CLI ist noch nicht global verfuegbar und wird lokal aus diesem Projekt
+gestartet.
 
 ## Voraussetzungen
 
@@ -27,6 +26,8 @@ npm run build
 Bob-Kontext anzeigen:
 
 ```bash
+npm run bob:setup
+npm run bob:home
 npm run bob:show
 ```
 
@@ -41,6 +42,8 @@ Alternative:
 ```bash
 npm run bob -- show
 npm run bob -- init
+npm run bob -- setup
+npm run bob -- home
 npm run bob -- help
 ```
 
@@ -52,11 +55,11 @@ npm run lint
 npm run format:check
 ```
 
-## V1-Grenzen
+## V2-Grenzen
 
 - kein eigenes Terminal
-- kein `bob setup`
 - kein npm-Publish
 - kein globales `npx`
-- keine Projektverwaltung
+- kein programmiertes `bob project add/use/list`
 - keine Bob-Server- oder Bob-Console-Integration
+- Bob-Home ist fuer V2 fest `~/.bob`
