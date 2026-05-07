@@ -25,3 +25,23 @@
 - Bob CLI kann spaeter zentral arbeiten und mehrere Projekte betreuen, z.B. ueber eine `projects.md`.
 - Projektdateien in Zielprojekten sollen Projektkontext, Aufgaben und Regeln enthalten, aber keine neue Bob-Persoenlichkeit.
 - npm/npx oder globale Installation kommen erst nach lokal validierter V1.
+
+## V2 Planung
+
+- V2 soll ein Bob-Home einfuehren.
+- Fuer V2 ist `~/.bob` als Bob-Home in Ordnung.
+- Das Bob-Home soll zentrale Bob-Dateien enthalten, z.B. `BOB.md`, `memory.md` und `projects.md`.
+- Das Bob-Home soll fuer V2 auch ein `first-setup.md` vorsehen.
+- `BOB.md` enthaelt die zentrale Bob-Persoenlichkeit.
+- `memory.md` enthaelt dauerhaftes Bob-CLI-Gedaechtnis.
+- `projects.md` enthaelt bekannte Projekte und kann von Bob/Codex gepflegt werden.
+- `first-setup.md` beschreibt, wie Bob den Benutzer beim ersten Setup fuehrt.
+- Bob soll dem Benutzer erklaeren, dass Bob CLI zentral arbeiten und mehrere Projekte kennen kann.
+- Bob soll den Benutzer fragen, ob er nur mit Bob CLI selbst arbeiten, ein bestehendes Projekt registrieren oder spaeter mehrere Projekte verwalten moechte.
+- V2 soll kein programmiertes `bob project add`, `bob project use` oder `bob project list` bauen.
+- Projektverwaltung soll zuerst ueber Codex, klare Regeln und einfache Markdown-Dateien laufen.
+- `bob setup` soll das Bob-Home anlegen und fehlende Basisdateien erstellen.
+- `bob setup` soll keine bestehenden Dateien ungefragt ueberschreiben.
+- In V3 kann das Bob-Home per Setup konfigurierbar werden.
+- Bob CLI soll langfristig plattformfreundlich unter Linux, macOS und Windows laufen.
+- V2 soll deshalb Pfade ueber Node-APIs und das User-Home aufloesen, nicht ueber Shell-spezifische Annahmen.
