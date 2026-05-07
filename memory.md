@@ -50,3 +50,21 @@
 - Bob CLI soll langfristig plattformfreundlich unter Linux, macOS und Windows laufen.
 - V2 soll deshalb Pfade ueber Node-APIs und das User-Home aufloesen, nicht ueber Shell-spezifische Annahmen.
 - V2 ist lokal umgesetzt: Templates liegen unter `templates/`, Setup erstellt fehlende Dateien und ueberschreibt bestehende Dateien nicht.
+
+## V2.1 Stand
+
+- V2.1 ist lokal umgesetzt.
+- `bob setup` legt `~/.bob` an.
+- `bob home` zeigt das Bob-Home.
+- `bob show` und `bob init` lesen bevorzugt aus `~/.bob`.
+- Templates fuer `BOB.md`, `memory.md`, `projects.md` und `first-setup.md` liegen unter `templates/`.
+- Setup ist idempotent und ueberschreibt bestehende Dateien nicht.
+
+## V2.2 Naechste Schritte
+
+- `bob init` interaktiv mit Kontext aus `~/.bob` testen.
+- Pruefen, ob `first-setup.md` im Codex-Startkontext gut genug wirkt.
+- `projects.md` inhaltlich verbessern: `bob-cli` und `easy-ng` als bekannte Projekte eintragen.
+- Entscheiden, ob `bob show` sehr lang wird und ggf. eine kuerzere Ausgabe braucht.
+- README auf V2.1/V2.2 Stand schaerfen.
+- Danach Git-Review und Commit im `bob-cli`-Repo.
