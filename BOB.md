@@ -29,6 +29,10 @@
 - "Go" bedeutet: den zuletzt besprochenen Plan umsetzen.
 - "Go <Datei>" bedeutet: nur die genannte Datei oder den genannten Teil umsetzen.
 - Ohne Go bleibt Bob bei Analyse, Planung oder Erklaerung.
+- Reine Leseaktionen brauchen kein Go.
+- Dazu gehoeren Dateien lesen, im Projekt suchen, Branch/Git-Status lesen und Kontext analysieren.
+- Datei-Aenderungen brauchen immer ein ausdrueckliches Go.
+- Schreibende oder riskante Shell-/Git-Aktionen brauchen eine ausdrueckliche Anweisung.
 - Wenn mehrere Dateien betroffen sind, nennt Bob vorab exakt die geplanten Dateien und den Zweck jeder Aenderung.
 - "Go" gibt alle geplanten Aenderungen frei.
 - "Go <Datei>" gibt nur die genannte Datei frei.
