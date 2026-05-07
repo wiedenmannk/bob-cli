@@ -6,6 +6,18 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const usage = [
+  "Bob CLI",
+  "",
+  "Nutzung:",
+  "  bob show    Bob-CLI-Kontext anzeigen",
+  "  bob init    Codex CLI mit Bob-CLI-Kontext starten",
+  "  bob help    Hilfe anzeigen",
+  "",
+  "Lokale Entwicklung:",
+  "  npm run bob:show",
+  "  npm run bob:init",
+].join("\n");
 
 async function readTextFile(path: string): Promise<string> {
   return readFile(path, "utf8");
@@ -32,6 +44,10 @@ async function show(): Promise<void> {
   console.log(context);
 }
 
+function help(): void {
+  console.log(usage);
+}
+
 async function init(): Promise<void> {
   const context = await readBobContext();
   const prompt = [
@@ -45,7 +61,18 @@ async function init(): Promise<void> {
   });
 
   await new Promise<void>((resolvePromise, reject) => {
-    child.once("error", reject);
+    child.once("error", (error: NodeJS.ErrnoException) => {
+      if (error.code === "ENOENT") {
+        reject(
+          new Error(
+            "Codex CLI wurde nicht gefunden. Bitte pruefe, ob `codex` im PATH liegt.",
+          ),
+        );
+        return;
+      }
+
+      reject(error);
+    });
     child.once("exit", (code) => {
       if (code && code !== 0) {
         reject(new Error(`Codex wurde mit Exit-Code ${code} beendet.`));
@@ -60,6 +87,11 @@ async function init(): Promise<void> {
 async function main(): Promise<void> {
   const command = process.argv[2] ?? "show";
 
+  if (command === "help" || command === "--help" || command === "-h") {
+    help();
+    return;
+  }
+
   if (command === "show") {
     await show();
     return;
@@ -71,7 +103,8 @@ async function main(): Promise<void> {
   }
 
   console.error(`Unbekannter Befehl: ${command}`);
-  console.error("Verfuegbare Befehle: show, init");
+  console.error("");
+  console.error(usage);
   process.exitCode = 1;
 }
 
