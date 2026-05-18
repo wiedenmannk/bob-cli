@@ -12,7 +12,7 @@ const bobHome = join(homedir(), ".bob");
 const projectBobDir = resolve(process.cwd(), ".bob");
 const templateDir = resolve(rootDir, "templates");
 const bobFiles = ["BOB.md", "memory.md", "projects.md", "first-setup.md"];
-const projectBobFiles = ["tasks.md", "notes.md"];
+const projectBobFiles = ["tasks.md", "index.md"];
 const usage = [
   "Bob CLI",
   "",

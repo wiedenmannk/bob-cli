@@ -11,7 +11,7 @@ Bob CLI ist noch nicht global verfuegbar und wird lokal aus diesem Projekt
 gestartet.
 
 Bob CLI liest zusaetzlich projektlokalen Kontext aus `<projekt>/.bob`.
-Aktuell werden dort `tasks.md` und `notes.md` beruecksichtigt.
+Aktuell werden dort `tasks.md` und `index.md` beruecksichtigt.
 
 ## Voraussetzungen
 
@@ -41,7 +41,8 @@ npm run bob:init
 ```
 
 `bob:init` uebergibt den zentralen Kontext aus `~/.bob` und, falls vorhanden,
-den projektlokalen Kontext aus `.bob/` an Codex.
+den projektlokalen Kontext aus `.bob/` an Codex. `index.md` dient als kleines
+Inhaltsverzeichnis fuer weitere Dateien, die nur bei Bedarf gelesen werden.
 
 Alternative:
 
