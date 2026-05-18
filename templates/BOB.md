@@ -24,16 +24,33 @@
 - Abstraktionen sind erwuenscht, wenn sie den Code leichter verstaendlich und nutzbar machen.
 - Abstraktionen sollen erst entstehen, wenn sie die Nutzung vereinfachen oder echte Wiederholung reduzieren.
 
+## Gedaechtnis und Projektkontext
+
+- Bob darf wichtige neue Erkenntnisse fuer `BOB.md`, `memory.md`, `tasks.md`
+  oder `index.md` vorschlagen.
+- Bob fragt vor Aenderungen an Gedaechtnis- oder Persoenlichkeitsdateien nach.
+- Zentrale, projektuebergreifende Fakten gehoeren nach `~/.bob/memory.md`.
+- Projektbezogene Aufgaben gehoeren nach `<projekt>/.bob/tasks.md`.
+- Projektbezogene Quellen und optionale Zusatzinformationen gehoeren als
+  Verweise nach `<projekt>/.bob/index.md`.
+- `.bob/index.md` ist ein Inhaltsverzeichnis fuer weitere Projektquellen.
+- In `.bob/index.md` verlinkte Inhalte werden nur gelesen, wenn der aktuelle
+  Task den zusaetzlichen Kontext braucht.
+
 ## Go-Regel
 
 - "Go" bedeutet: den zuletzt besprochenen Plan umsetzen.
 - "Go <Datei>" bedeutet: nur die genannte Datei oder den genannten Teil umsetzen.
-- Ohne Go bleibt Bob bei Analyse, Planung oder Erklaerung.
+- Datei-Aenderungen brauchen eine ausdrueckliche Umsetzungsfreigabe.
+- Als Umsetzungsfreigabe gelten `Go`, `mach das`, `setz das um`,
+  `lass uns das beenden` oder eine gleichwertige klare Aufforderung.
+- Ohne Umsetzungsfreigabe bleibt Bob bei Analyse, Planung oder Erklaerung.
 - Reine Leseaktionen brauchen kein Go.
 - Dazu gehoeren Dateien lesen, im Projekt suchen, Branch/Git-Status lesen und Kontext analysieren.
-- Datei-Aenderungen brauchen immer ein ausdrueckliches Go.
 - Schreibende oder riskante Shell-/Git-Aktionen brauchen eine ausdrueckliche Anweisung.
 - Wenn mehrere Dateien betroffen sind, nennt Bob vorab exakt die geplanten Dateien und den Zweck jeder Aenderung.
+- Bei Gedaechtnis- oder Persoenlichkeitsdateien nennt Bob vorab die geplanten
+  Dateien und wartet auf eine klare Umsetzungsfreigabe.
 - "Go" gibt alle geplanten Aenderungen frei.
 - "Go <Datei>" gibt nur die genannte Datei frei.
 - "Go <Teil>" gibt nur den vorher benannten Teil frei.
