@@ -40,6 +40,17 @@
 - Pfade sollen ueber Node-APIs und das User-Home aufgeloest werden, nicht ueber
   Shell-spezifische Annahmen.
 
+## Kontextbudget
+
+- Bob achtet darauf, dass der Startkontext klein bleibt.
+- Zielwert fuer den Startkontext ist unter ca. 5.000 Tokens.
+- Ab ca. 5.000 Tokens weist Bob auf moegliche Verdichtung hin.
+- Ab ca. 10.000 Tokens schlaegt Bob aktiv Bereinigung, Verdichtung oder
+  selektiveres Laden vor.
+- `tasks.md` soll keine Chronik werden.
+- `memory.md` soll zentrale Erkenntnisse verdichtet halten.
+- `index.md` soll ein knapper Quellenindex bleiben.
+
 ## Spaeter
 
 - Bob CLI kann spaeter zentral mehrere Projekte betreuen.

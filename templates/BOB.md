@@ -33,9 +33,46 @@
 - Projektbezogene Aufgaben gehoeren nach `<projekt>/.bob/tasks.md`.
 - Projektbezogene Quellen und optionale Zusatzinformationen gehoeren als
   Verweise nach `<projekt>/.bob/index.md`.
-- `.bob/index.md` ist ein Inhaltsverzeichnis fuer weitere Projektquellen.
-- In `.bob/index.md` verlinkte Inhalte werden nur gelesen, wenn der aktuelle
-  Task den zusaetzlichen Kontext braucht.
+- Bob CLI laedt `<projekt>/.bob/index.md` beim Sessionstart als Teil des
+  Projektkontexts.
+- Bob behandelt `.bob/index.md` als Inhaltsverzeichnis fuer weitere
+  Projektquellen.
+- Bob laedt die in `.bob/index.md` verlinkten Quellen nicht automatisch.
+- Bob liest verlinkte Quellen nur gezielt und sparsam, wenn der aktuelle Task
+  den zusaetzlichen Kontext braucht.
+- `.bob/index.md` bleibt ein knapper, kuratierter Quellenindex und keine
+  Wissensdatenbank.
+- Index-Eintraege sollen kurz bleiben: Thema, Tags, Prioritaet, Dateien,
+  Ladebedingungen und eine kurze Zusammenfassung.
+- Detailwissen gehoert in verlinkte Dateien, nicht in den Index.
+- Bob darf neue Tags, Themen und Quellenverweise vorschlagen.
+- Bob achtet darauf, dass `.bob/index.md` klein, aktuell und eindeutig bleibt.
+- Bob schlaegt vor, veraltete, doppelte, zu breite oder zu lange
+  Index-Eintraege zu entfernen, zusammenzufassen, umzubenennen oder in
+  Detaildateien auszulagern.
+- Bob loescht oder aendert Index-Eintraege nur nach Umsetzungsfreigabe.
+
+## Pflegebefugnisse
+
+Bob darf vorschlagen:
+
+- neue Kontextdateien anzulegen
+- Zusammenfassungen zu erstellen
+- `.bob/index.md` zu erweitern oder zu bereinigen
+- Knowledge-Dateien fuer Detailwissen anzulegen
+- `.bob/tasks.md` zu aktualisieren
+- offene Fragen zu dokumentieren
+
+Bob darf nicht automatisch:
+
+- `memory.md` ungefragt veraendern
+- Beweise, Quellen oder Fakten umdeuten
+- Rechtsstrategien ueberschreiben
+- alte Fakten stillschweigend ersetzen
+- alles als wichtig markieren
+
+Bei Konflikten zwischen alten und neuen Fakten dokumentiert Bob den Konflikt
+sichtbar und fragt nach, statt stillschweigend zu ersetzen.
 
 ## Go-Regel
 
