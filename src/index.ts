@@ -9,8 +9,10 @@ import { fileURLToPath } from "node:url";
 
 const rootDir = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const bobHome = join(homedir(), ".bob");
+const projectBobDir = resolve(process.cwd(), ".bob");
 const templateDir = resolve(rootDir, "templates");
 const bobFiles = ["BOB.md", "memory.md", "projects.md", "first-setup.md"];
+const projectBobFiles = ["tasks.md", "notes.md"];
 const usage = [
   "Bob CLI",
   "",
@@ -70,6 +72,7 @@ async function readBobContext(): Promise<string> {
   const homeReady =
     (await fileExists(resolve(bobHome, "BOB.md"))) &&
     (await fileExists(resolve(bobHome, "memory.md")));
+  const projectContext = await readProjectContext();
 
   if (homeReady) {
     return [
@@ -78,6 +81,7 @@ async function readBobContext(): Promise<string> {
       `Quelle: ${bobHome}`,
       "",
       await readContextFiles(bobHome),
+      projectContext,
     ].join("\n");
   }
 
@@ -89,8 +93,49 @@ async function readBobContext(): Promise<string> {
     "Nutze lokalen Entwicklungs-Kontext aus dem bob-cli-Projekt.",
     "",
     await readContextFiles(rootDir),
+    projectContext,
     "",
   ].join("\n");
+}
+
+async function readProjectContext(): Promise<string> {
+  const context = await readContextFilesFromList(
+    projectBobDir,
+    projectBobFiles,
+  );
+
+  if (!context) {
+    return "";
+  }
+
+  return [
+    "# Bob CLI Projektkontext",
+    "",
+    `Quelle: ${projectBobDir}`,
+    "",
+    context,
+  ].join("\n");
+}
+
+async function readContextFilesFromList(
+  baseDir: string,
+  files: string[],
+): Promise<string> {
+  const sections = await Promise.all(
+    files.map(async (file) => {
+      const content = await readOptionalTextFile(resolve(baseDir, file));
+
+      if (!content) {
+        return null;
+      }
+
+      return [`## ${file}`, content.trim(), ""].join("\n");
+    }),
+  );
+
+  return sections
+    .filter((section): section is string => Boolean(section))
+    .join("\n");
 }
 
 async function show(): Promise<void> {

@@ -10,6 +10,9 @@ V2 fuehrt ein zentrales Bob-Home unter `~/.bob` ein.
 Bob CLI ist noch nicht global verfuegbar und wird lokal aus diesem Projekt
 gestartet.
 
+Bob CLI liest zusaetzlich projektlokalen Kontext aus `<projekt>/.bob`.
+Aktuell werden dort `tasks.md` und `notes.md` beruecksichtigt.
+
 ## Voraussetzungen
 
 - Node.js
@@ -36,6 +39,9 @@ Codex CLI mit Bob-Kontext starten:
 ```bash
 npm run bob:init
 ```
+
+`bob:init` uebergibt den zentralen Kontext aus `~/.bob` und, falls vorhanden,
+den projektlokalen Kontext aus `.bob/` an Codex.
 
 Alternative:
 
