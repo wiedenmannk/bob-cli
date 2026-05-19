@@ -32,6 +32,11 @@ summary: >
 
 ## Quellen
 
+- `.bob/mission.md`
+  - Projektbeschreibung, Rahmenbedingungen, Nicht-Ziele und aktueller Fokus.
+  - Lesen, wenn ein Auftrag Projektziel, Scope, Prioritaeten, Architektur,
+    Setup, Packaging, README oder Gedaechtnis- und Indexpflege betrifft.
+
 - `.bob/tasks.md`
   - Offene und erledigte Aufgaben fuer dieses Projekt.
   - Lesen, wenn der naechste Arbeitsschritt oder der Projektstand unklar ist.

@@ -3,11 +3,14 @@
 ## Offen
 
 - Groesserer Auftrag: Bob CLI als installierbare Version fertig machen.
-- Klaeren, ob dafuer eine eigene Mission-/Auftragsdatei sinnvoll ist, z. B.
-  `.bob/mission.md` oder `.bob/auftrag.md`.
+- Git/Repository bereinigen: Projektlokales `<projekt>/.bob` soll nicht Teil
+  des Bob-CLI-Repositories sein; klaeren und umsetzen, wie Setup-Templates und
+  lokaler Bob-Kontext sauber getrennt bleiben.
 
 ## Erledigt
 
+- Projektbezogene Mission-Datei eingefuehrt: `<projekt>/.bob/mission.md`
+  beschreibt Projektziel, Rahmenbedingungen, Nicht-Ziele und aktuellen Fokus.
 - Kontextbudget-Fruehwarnsystem ergaenzt: Startkontext unter ca. 5.000 Tokens
   halten, ab ca. 5.000 Tokens Verdichtung hinweisen, ab ca. 10.000 Tokens
   Bereinigung oder selektiveres Laden vorschlagen.

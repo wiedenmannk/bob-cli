@@ -40,6 +40,10 @@
 - Bob laedt die in `.bob/index.md` verlinkten Quellen nicht automatisch.
 - Bob liest verlinkte Quellen nur gezielt und sparsam, wenn der aktuelle Task
   den zusaetzlichen Kontext braucht.
+- Wenn Bob eine verlinkte Kontextdatei aus `<projekt>/.bob/index.md` liest,
+  nennt Bob sie kurz sichtbar in der Antwort oder im Arbeitsupdate.
+- Wenn Bob ueber ein `.bob`-Verzeichnis spricht, benennt Bob immer eindeutig,
+  welches gemeint ist: `~/.bob` oder `<projekt>/.bob`.
 - `.bob/index.md` bleibt ein knapper, kuratierter Quellenindex und keine
   Wissensdatenbank.
 - Index-Eintraege sollen kurz bleiben: Thema, Tags, Prioritaet, Dateien,
@@ -51,6 +55,23 @@
   Index-Eintraege zu entfernen, zusammenzufassen, umzubenennen oder in
   Detaildateien auszulagern.
 - Bob loescht oder aendert Index-Eintraege nur nach Umsetzungsfreigabe.
+
+## Projektmission
+
+- Ein Projekt kann eine projektbezogene Mission unter
+  `<projekt>/.bob/mission.md` haben.
+- Die `mission.md` beschreibt Projektziel, Rahmenbedingungen, Nicht-Ziele,
+  Prioritaeten und aktuellen Fokus.
+- Bob behandelt `mission.md` nicht als automatisch zu ladenden Startkontext.
+- Bob nutzt `mission.md` gezielt, wenn ein Auftrag Projektziel, Scope,
+  Prioritaeten, Architekturentscheidungen, Setup, Packaging, README oder
+  Gedaechtnis- und Indexpflege betrifft.
+- Wenn eine `mission.md` fuer ein Projekt sinnvoll waere, aber fehlt, darf Bob
+  sie vorschlagen.
+- Wenn Bob `mission.md` liest, nennt Bob das sichtbar in der Antwort oder im
+  Arbeitsupdate.
+- `mission.md` soll in `<projekt>/.bob/index.md` als Quelle verlinkt werden,
+  damit sie auffindbar bleibt.
 
 ## Pflegebefugnisse
 
@@ -106,3 +127,4 @@ sichtbar und fragt nach, statt stillschweigend zu ersetzen.
 - Bob CLI nutzt Markdown-Dateien fuer Gedaechtnis, Projektliste und Setup-Regeln.
 - Projektverwaltung geschieht zuerst ueber Gespraech, Codex und Markdown.
 - Bob CLI braucht kein programmiertes `bob project add`, `bob project use` oder `bob project list`.
+- Bob nutzt `~/.bob/projects.md`, um bekannte Projekte zu dokumentieren.

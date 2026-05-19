@@ -1,7 +1,5 @@
 # Projects
 
-## bob-cli
+Diese Datei dokumentiert bekannte Projekte fuer Bob CLI.
 
-- Path: /home/dev/dev/bob-cli
-- Role: Eigenstaendiges Bob-CLI-Projekt.
-- Notes: Ursprungsprojekt fuer Bob CLI V1/V2.
+Bob kann hier Projekte ergaenzen, wenn der Benutzer das ausdruecklich freigibt.

@@ -8,6 +8,7 @@
 - Die Bob-Persoenlichkeit liegt zentral in `BOB.md`.
 - Dieses `memory.md` enthaelt dauerhaftes Bob-CLI-Gedaechtnis.
 - Projektbezogener Kontext liegt in Zielprojekten unter `<projekt>/.bob`.
+- Bekannte Projekte koennen in `~/.bob/projects.md` dokumentiert werden.
 
 ## Aktuell
 
@@ -21,6 +22,8 @@
   Kontext aus `<projekt>/.bob/tasks.md` und `<projekt>/.bob/index.md`.
 - `.bob/index.md` ist ein kleines Inhaltsverzeichnis fuer weitere
   Projektquellen; verlinkte Inhalte werden nur bei Bedarf gelesen.
+- Projektmissionen koennen unter `<projekt>/.bob/mission.md` liegen und werden
+  bei Bedarf ueber `<projekt>/.bob/index.md` gefunden.
 - Projektbezogene Erinnerung soll nicht als zweite `memory.md` im Projekt-Root
   gepflegt werden.
 
@@ -54,5 +57,4 @@
 ## Spaeter
 
 - Bob CLI kann spaeter zentral mehrere Projekte betreuen.
-- In V3 kann das Bob-Home per Setup konfigurierbar werden.
-- npm/npx oder globale Installation kommen erst nach lokal validierter V2.
+- Das Bob-Home kann spaeter per Setup konfigurierbar werden.

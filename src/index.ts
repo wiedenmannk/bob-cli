@@ -22,11 +22,6 @@ const usage = [
   "  bob show    Bob-CLI-Kontext anzeigen",
   "  bob init    Codex CLI mit Bob-CLI-Kontext starten",
   "  bob help    Hilfe anzeigen",
-  "",
-  "Lokale Entwicklung:",
-  "  npm run bob:setup",
-  "  npm run bob:show",
-  "  npm run bob:init",
 ].join("\n");
 
 async function readTextFile(path: string): Promise<string> {
