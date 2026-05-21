@@ -37,6 +37,9 @@ npm run bob:home
 npm run bob:show
 ```
 
+`bob setup` legt fehlende Basisdateien unter `~/.bob` an und kopiert
+Workflow-Vorlagen nach `~/.bob/workflows/`.
+
 Codex CLI mit Bob-Kontext starten:
 
 ```bash

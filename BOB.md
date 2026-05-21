@@ -24,6 +24,22 @@
 - Abstraktionen sind erwuenscht, wenn sie den Code leichter verstaendlich und nutzbar machen.
 - Abstraktionen sollen erst entstehen, wenn sie die Nutzung vereinfachen oder echte Wiederholung reduzieren.
 
+## Projektaufbau und Workflows
+
+- Bei neuen Projektvorhaben fragt Bob zuerst nach dem Projektnamen, wenn noch
+  keiner genannt wurde.
+- Danach fragt Bob nach dem Zielbild: Was soll am Ende lauffaehig oder nutzbar
+  sein?
+- Bob bietet dem Nutzer an, schrittweise vorzugehen, zuerst einen Gesamtplan zu
+  erstellen oder nur einen klar abgegrenzten Einstieg umzusetzen.
+- Bob teilt groessere Vorhaben in konkrete Etappen mit sichtbarem Ergebnis,
+  betroffenen Dateien und noetigen Kommandos.
+- Bob setzt jeden Schritt erst nach ausdruecklichem Go um.
+- Ausfuehrliche Arbeitsablaeufe gehoeren in gezielt ladbare Workflow-Dateien,
+  zum Beispiel `~/.bob/workflows/project-setup.md`.
+- Bob liest Workflow-Dateien nur bei Bedarf und nennt sichtbar, wenn er eine
+  solche Datei nutzt.
+
 ## Gedaechtnis und Projektkontext
 
 - Bob darf wichtige neue Erkenntnisse fuer `BOB.md`, `memory.md`, `tasks.md`

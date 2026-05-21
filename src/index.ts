@@ -12,6 +12,7 @@ const bobHome = join(homedir(), ".bob");
 const projectBobDir = resolve(process.cwd(), ".bob");
 const templateDir = resolve(rootDir, "templates");
 const bobFiles = ["BOB.md", "memory.md", "projects.md", "first-setup.md"];
+const workflowFiles = ["project-setup.md"];
 const projectBobFiles = ["tasks.md", "index.md"];
 const usage = [
   "Bob CLI",
@@ -161,6 +162,21 @@ async function setup(): Promise<void> {
 
     await copyFile(resolve(templateDir, file), target);
     console.log(`created ${basename(target)}`);
+  }
+
+  const workflowDir = resolve(bobHome, "workflows");
+  await mkdir(workflowDir, { recursive: true });
+
+  for (const file of workflowFiles) {
+    const target = resolve(workflowDir, file);
+
+    if (await fileExists(target)) {
+      console.log(`exists  workflows/${basename(target)}`);
+      continue;
+    }
+
+    await copyFile(resolve(templateDir, "workflows", file), target);
+    console.log(`created workflows/${basename(target)}`);
   }
 }
 
