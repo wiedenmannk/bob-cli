@@ -12,6 +12,9 @@ gestartet.
 
 Bob CLI liest zusaetzlich projektlokalen Kontext aus `<projekt>/.bob`.
 Aktuell werden dort `tasks.md` und `index.md` beruecksichtigt.
+Dieser projektlokale Bob-Kontext ist Arbeitskontext des jeweiligen Projekts
+und soll nicht Teil des Bob-CLI-Repositories sein. Setup-Vorlagen fuer neue
+Bob-Homes liegen stattdessen unter `templates/`.
 
 ## Voraussetzungen
 
